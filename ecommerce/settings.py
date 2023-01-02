@@ -24,7 +24,7 @@ BASE_DIR = Path(__file__).resolve(strict=True).parent.parent
 SECRET_KEY = config('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = config('DEBUG', default=False, cast=bool)
+DEBUG = True
 
 ALLOWED_HOSTS = ['web-production-bb61.up.railway.app','127.0.0.1']
 
@@ -139,7 +139,7 @@ EMAIL_HOST_PASSWORD = config('EMAIL_HOST_PASSWORD')
 STATIC_URL = '/static/'
 STATIC_ROOT=BASE_DIR/'static'
 
-#STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
+STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
 
 MEDIA_URL='/media/'
 MEDIA_ROOT=BASE_DIR/'media'
