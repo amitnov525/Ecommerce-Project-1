@@ -26,7 +26,7 @@ SECRET_KEY = config('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['web-production-bb61.up.railway.app','127.0.0.1']
 
 
 # Application definition
@@ -149,3 +149,5 @@ from django.contrib.messages import constants as messages
 MESSAGE_TAGS = {
     messages.ERROR: 'danger'
 }
+
+CSRF_TRUSTED_ORIGINS = ["https://web-production-bb61.up.railway.app/"]
