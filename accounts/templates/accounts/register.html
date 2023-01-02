@@ -1,0 +1,69 @@
+{% extends 'shoping_app/base.html' %}
+{%block content%}
+<!-- ========================= SECTION CONTENT ========================= -->
+<section class="section-content padding-y">
+
+    <!-- ============================ COMPONENT REGISTER   ================================= -->
+        <div class="card mx-auto" style="max-width:520px; margin-top:40px;">
+          <article class="card-body">
+            {% include 'includes/alerts.html' %}
+            <header class="mb-4"><h4 class="card-title">Sign up</h4></header>
+            <form action="{% url 'register' %}" method="POST" novalidate>
+                {% csrf_token %}
+                    <div class="form-row">
+                        <div class="col form-group">
+                            <label>First name</label>
+                            {{form.first_name}} <samll class="text-danger">{{form.first_name.errors | striptags}}</small>
+                        </div> <!-- form-group end.// -->
+                        <div class="col form-group">
+                            <label>Last name</label>
+                            {{form.last_name}} <small class="text-danger">{{form.last_name.errors | striptags}}</small>
+                        </div> <!-- form-group end.// -->
+                    </div> <!-- form-row end.// -->
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                          <label>Email Address</label>
+                          {{form.email}} <small class="text-danger">{{form.email.errors | striptags}}</small>
+                        </div> <!-- form-group end.// -->
+                        <div class="form-group col-md-6">
+                          <label>Phone Number</label>
+                          {{form.phone_number}} <small class="text-danger">{{form.phone_number | striptags}}</small>
+                        </div> <!-- form-group end.// -->
+                    </div> <!-- form-row.// -->
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label>Create password</label>
+                            {{form.password}} <small class="text-danger">{{form.password.errors | striptags}}</small>
+                        </div> <!-- form-group end.// --> 
+                        <div class="form-group col-md-6">
+                            <label>Repeat password</label>
+                            {{form.confirm_password}} <small class="text-danger">{{form.confirm_password.errors | striptags}}</small>
+                        </div> <!-- form-group end.// -->  
+                    </div>
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-primary btn-block"> Register  </button>
+                    </div> <!-- form-group// --> 
+                    {% if form.non_field_errors%}
+                    <div class="alert alert-danger">
+                        <ul>
+                        {% for error in form.non_field_errors%}
+                        <li class="text-danger">{{error}}</li>
+                            {% endfor %}
+                    </div>
+                    {% endif %}
+
+
+
+                        
+                </form>
+            </article><!-- card-body.// -->
+        </div> <!-- card .// -->
+        <p class="text-center mt-4">Have an account? <a href="{% url 'login' %}">Log In</a></p>
+        <br><br>
+    <!-- ============================ COMPONENT REGISTER  END.// ================================= -->
+    
+    
+    </section>
+    <!-- ========================= SECTION CONTENT END// ========================= -->
+    
+{% endblock %}

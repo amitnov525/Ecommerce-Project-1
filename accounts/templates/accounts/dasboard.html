@@ -1,0 +1,57 @@
+{% extends 'shoping_app/base.html' %}
+{%block content%}
+<!-- ========================= SECTION CONTENT ========================= -->
+<section class="section-conten padding-y bg">
+
+    <div class="container">
+        <div class="row">
+            {% include 'includes/alerts.html' %}
+        <aside class="col-md-3">
+            <!--   SIDEBAR   -->
+            {% include 'includes/dashboard_sidebar.html' %}
+            <br>
+            <a class="btn btn-light btn-block" href="{% url 'logout' %}"> <i class="fa fa-power-off"></i> <span class="text">Log out</span> </a> 
+            <!--   SIDEBAR .//END   -->
+        </aside>
+        <main class="col-md-9">
+            <article class="card">
+            <header class="card-header">
+                <strong class="d-inline-block mr-3">Loged In as:</strong>
+                <span>{{user.full_name}}</span>
+            </header>
+            <div class="card-body">
+                <div class="row"> 
+                    <div class="col-md-6">
+                        <div class="card" style="text-align:center;">
+                            <div class="card-body">
+                                <h5 class="card-title">Total Orders</h5>
+                                <h4>{{orders_count}}</h4>
+                                <a href="{% url 'my-order' %}">View Orders</a>
+                            </diV> 
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="card" style="text-align:center;">
+                            <div class="card-body">
+                                <img src="{{userprofile.profile_picture.url}}" alt="User Profile Picture.Please Upload a photo." width="50" height="50" style="border-radius:50%;">
+                                <p class="mb-0">{{user.email}}</p>
+                                <p>{{user.phone_number}}
+                            </diV>
+                        </div>
+                    </div>
+
+                    
+                </div> <!-- row.// -->
+            </div> <!-- card-body .// -->
+            <!-- table-responsive .end// -->
+
+            </article> <!-- order-group.// --> 
+        </main>
+    </div> <!-- row.// -->
+    </div>
+    
+    
+    </section>
+    <!-- ========================= SECTION CONTENT END// ========================= -->
+
+{%endblock%}

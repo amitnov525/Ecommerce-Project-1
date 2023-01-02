@@ -1,0 +1,73 @@
+{% extends 'shoping_app/base.html' %}
+{%block content%}
+<!-- ========================= SECTION CONTENT ========================= -->
+<section class="section-content padding-y">
+
+    <!-- ============================ COMPONENT REGISTER   ================================= -->
+        <div class="card mx-auto" style="max-width:520px; margin-top:40px;">
+          <article class="card-body">
+            {% include 'includes/alerts.html' %}
+            <header class="mb-4"><h4 class="card-title">Create Profile</h4></header>
+            <form action="{% url 'createprofile' user.id %}" method="POST" enctype="multipart/form-data" novalidate>
+                {% csrf_token %}
+                    <div class="form-row">
+                        <div class="col form-group col-md-6">
+                            <label>Address Line1</label>
+                            {{profile_form.address_line_1}} <samll class="text-danger">{{profile_form.address_line_1 | striptags}}</small>
+                        </div> <!-- form-group end.// -->
+                        <div class="col form-group col-md-6">
+                            <label>Address Line2</label>
+                            {{profile_form.address_line_2}} <small class="text-danger">{{profile_form.address_line_2 | striptags}}</small>
+                        </div> <!-- form-group end.// -->
+                    </div> <!-- form-row end.// -->
+                    <div class="form-row">
+                        <div class="form-group col-md-3">
+                          <label>City</label>
+                          {{profile_form.city}} <small class="text-danger">{{profile_form.city | striptags}}</small>
+                        </div> <!-- form-group end.// -->
+                        <div class="form-group col-md-3">
+                          <label>State</label>
+                          {{profile_form.state}} <small class="text-danger">{{profile_form.state | striptags}}</small>
+                        </div> <!-- form-group end.// -->
+                        <div class="form-group col-md-3">
+                            <label>Country</label>
+                            {{profile_form.country}} <small class="text-danger">{{profile_form.country | striptags}}</small>
+                          </div> <!-- form-group end.// -->
+                          <div class="form-group col-md-3">
+                            <label>ZipCode</label>
+                            {{profile_form.zipcode}} <small class="text-danger">{{profile_form.zipcode | striptags}}</small>
+                          </div> <!-- form-group end.// -->
+                    </div> <!-- form-row.// -->
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label>Profile Picture</label>
+                            {{profile_form.profile_picture}}
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-primary btn-block"> Create Profile </button>
+                    </div> <!-- form-group// --> 
+                    {% if form.non_field_errors%}
+                    <div class="alert alert-danger">
+                        <ul>
+                        {% for error in form.non_field_errors%}
+                        <li class="text-danger">{{error}}</li>
+                            {% endfor %}
+                    </div>
+                    {% endif %}
+
+
+
+                        
+                </form>
+            </article><!-- card-body.// -->
+        </div> <!-- card .// -->
+        <p class="text-center mt-4">Have an account? <a href="{% url 'login' %}">Log In</a></p>
+        <br><br>
+    <!-- ============================ COMPONENT REGISTER  END.// ================================= -->
+    
+    
+    </section>
+    <!-- ========================= SECTION CONTENT END// ========================= -->
+    
+{% endblock %}
